@@ -24,6 +24,10 @@ app.use('/api/dashboard', dashboardRoutes);
 // Error Handling Middleware
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+  });
+}
+
+export default app;
